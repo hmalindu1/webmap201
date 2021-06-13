@@ -1,0 +1,18 @@
+{
+"type": "FeatureCollection",
+"name": "undugoda_lfdt_five",
+"features": [
+{ "type": "Feature", "properties": { "category": "Cattle", "amount": 145, "product": "Cow milk", "annual production (l)": 95592, "annual egg production": null }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Buffalo", "amount": 37, "product": "Buffalo milk", "annual production (l)": 11436, "annual egg production": null }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Poultry", "amount": 1200, "product": null, "annual production (l)": null, "annual egg production": 336792 }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Goats", "amount": 25, "product": null, "annual production (l)": null, "annual egg production": null }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Sheep", "amount": 12, "product": null, "annual production (l)": null, "annual egg production": null }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Pigs", "amount": 6, "product": null, "annual production (l)": null, "annual egg production": null }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Turkey", "amount": 30, "product": null, "annual production (l)": null, "annual egg production": null }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Quail", "amount": 300, "product": null, "annual production (l)": null, "annual egg production": 90000 }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Rabbits", "amount": 10, "product": null, "annual production (l)": null, "annual egg production": null }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Ducks", "amount": 30, "product": null, "annual production (l)": null, "annual egg production": 624 }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Domestic cocks", "amount": 10, "product": null, "annual production (l)": null, "annual egg production": null }, "geometry": null },
+{ "type": "Feature", "properties": { "category": "Total", "amount": 1805, "product": null, "annual production (l)": 107028, "annual egg production": 427416 }, "geometry": null }
+]
+}
