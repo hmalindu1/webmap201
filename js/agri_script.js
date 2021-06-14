@@ -352,11 +352,11 @@ function return_gnd_project_name(name) {
 
 function test_gnd_project_name(name) {
   if (ar_gnd_object_names.indexOf(name) < 0) {
-    $("div_gnd_find_project").addClass("has-error");
+    $("#div_gnd_find_project").addClass("has-error");
     $("#div_gnd_project_error").html("*******GND name was not found");
     $("#btn_gnd_find_project").attr("disabled", true);
   } else {
-    $("div_gnd_find_project").removeClass("has-error");
+    $("#div_gnd_find_project").removeClass("has-error");
     $("#div_gnd_project_error").html("");
     $("#btn_gnd_find_project").attr("disabled", false);
   }
