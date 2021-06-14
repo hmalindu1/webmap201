@@ -26,7 +26,7 @@ var ar_dsd_object_names = []; // empty array to set gnd names
 var ar_district_object_names = []; // empty array to set gnd names
 var ar_province_object_names = [];
 
-$(document).ready(function () {
+$(document).ready(function() {
   // jQuery document ready function
   // *************  Map intialization **********//
 
@@ -44,7 +44,7 @@ $(document).ready(function () {
   ctl_sidebar_button = L.easyButton(
     // easy button leaflet plugin adding methord
     '<i class="fa fa-bars"></i>',
-    function () {
+    function() {
       // setting up a function to bind the button into a side bar
       ctl_sidebar.show();
     },
@@ -108,7 +108,7 @@ $(document).ready(function () {
       onEachFeature: returnGnd,
     })
     .addTo(mymap);
-  gnd.on("data:loaded", function () {
+  gnd.on("data:loaded", function() {
     ar_gnd_object_names.sort();
     $("#text_gnd_find_project").autocomplete({
       source: ar_gnd_object_names,
@@ -118,7 +118,7 @@ $(document).ready(function () {
   dsd = L.geoJSON.ajax("data/dsd.geojson", {
     onEachFeature: returnDsd,
   });
-  dsd.on("data:loaded", function () {
+  dsd.on("data:loaded", function() {
     ar_dsd_object_names.sort();
     $("#text_dsd_find_project").autocomplete({
       source: ar_dsd_object_names,
@@ -128,7 +128,7 @@ $(document).ready(function () {
   district = L.geoJSON.ajax("data/district.geojson", {
     onEachFeature: returnDistrict,
   });
-  district.on("data:loaded", function () {
+  district.on("data:loaded", function() {
     ar_district_object_names.sort();
     $("#text_district_find_project").autocomplete({
       source: ar_district_object_names,
@@ -138,7 +138,7 @@ $(document).ready(function () {
   province = L.geoJSON.ajax("data/province.geojson", {
     onEachFeature: returnProvince,
   });
-  province.on("data:loaded", function () {
+  province.on("data:loaded", function() {
     ar_province_object_names.sort();
     $("#text_province_find_project").autocomplete({
       source: ar_province_object_names,
@@ -176,7 +176,7 @@ $(document).ready(function () {
     // console.log("yes");
   }
   // refresh overlay
-  mymap.on("overlayadd", function (e) {
+  mymap.on("overlayadd", function(e) {
     if (lyr_gnd_search) {
       lyr_gnd_search.remove();
     }
@@ -242,13 +242,13 @@ function returnGnd(json, layer) {
     fillColor: "#47B1D1",
     weight: 2,
   });
-  layer.on("mouseover", function () {
+  layer.on("mouseover", function() {
     //on mouseover function
     this.setStyle({
       fillColor: "#FFFFFF",
     });
   });
-  layer.on("mouseout", function () {
+  layer.on("mouseout", function() {
     //on mouseout function
     this.setStyle({
       fillColor: "#47B1D1",
@@ -269,13 +269,13 @@ function returnDsd(json, layer) {
     fillColor: "#47B1D1",
     weight: 2,
   });
-  layer.on("mouseover", function () {
+  layer.on("mouseover", function() {
     //on mouseover function
     this.setStyle({
       fillColor: "#C7DBFF",
     });
   });
-  layer.on("mouseout", function () {
+  layer.on("mouseout", function() {
     //on mouseout function
     this.setStyle({
       fillColor: "#47B1D1",
@@ -294,13 +294,13 @@ function returnDistrict(json, layer) {
     fillColor: "#47B1D1",
     weight: 2,
   });
-  layer.on("mouseover", function () {
+  layer.on("mouseover", function() {
     //on mouseover function
     this.setStyle({
       fillColor: "#C7DBFF",
     });
   });
-  layer.on("mouseout", function () {
+  layer.on("mouseout", function() {
     //on mouseout function
     this.setStyle({
       fillColor: "#47B1D1",
@@ -319,13 +319,13 @@ function returnProvince(json, layer) {
     fillColor: "#47B1D1",
     weight: 2,
   });
-  layer.on("mouseover", function () {
+  layer.on("mouseover", function() {
     //on mouseover function
     this.setStyle({
       fillColor: "#C7DBFF",
     });
   });
-  layer.on("mouseout", function () {
+  layer.on("mouseout", function() {
     //on mouseout function
     this.setStyle({
       fillColor: "#47B1D1",
@@ -362,12 +362,12 @@ function test_gnd_project_name(name) {
   }
 }
 
-$("#text_gnd_find_project").on("keyup paste click", function () {
+$("#text_gnd_find_project").on("keyup paste click", function() {
   var name = $("#text_gnd_find_project").val();
   test_gnd_project_name(name);
 });
 
-$("#btn_gnd_find_project").click(function () {
+$("#btn_gnd_find_project").click(function() {
   var name = $("#text_gnd_find_project").val();
   var lyr = return_gnd_project_name(name);
   if (lyr) {
@@ -385,8 +385,8 @@ $("#btn_gnd_find_project").click(function () {
     var att = lyr.feature.properties;
     $("#gnd_project_data").html(
       "<h6 class='text-center'> Attributes </h6><h6>Project ID: " +
-        att.GND_N +
-        "</h6>"
+      att.GND_N +
+      "</h6>"
     );
   } else {
     $("#div_gnd_project_error").html("*******GND name was not found");
@@ -419,12 +419,12 @@ function test_dsd_project_name(name) {
   }
 }
 
-$("#text_dsd_find_project").on("keyup paste click", function () {
+$("#text_dsd_find_project").on("keyup paste click", function() {
   var name = $("#text_dsd_find_project").val();
   test_dsd_project_name(name);
 });
 
-$("#btn_dsd_find_project").click(function () {
+$("#btn_dsd_find_project").click(function() {
   var name = $("#text_dsd_find_project").val();
   var lyr = return_dsd_project_name(name);
   if (lyr) {
@@ -442,8 +442,8 @@ $("#btn_dsd_find_project").click(function () {
     var att = lyr.feature.properties;
     $("#dsd_project_data").html(
       "<h6 class='text-center'> Attributes </h6><h6>Project ID: " +
-        att.ADM3_EN +
-        "</h6>"
+      att.ADM3_EN +
+      "</h6>"
     );
   } else {
     $("#div_dsd_project_error").html("*******DSD name was not found");
@@ -477,12 +477,12 @@ function test_district_project_name(name) {
   }
 }
 
-$("#text_district_find_project").on("keyup paste click", function () {
+$("#text_district_find_project").on("keyup paste click", function() {
   var name = $("#text_district_find_project").val();
   test_district_project_name(name);
 });
 
-$("#btn_district_find_project").click(function () {
+$("#btn_district_find_project").click(function() {
   var name = $("#text_district_find_project").val();
   var lyr = return_district_project_name(name);
   if (lyr) {
@@ -500,8 +500,8 @@ $("#btn_district_find_project").click(function () {
     var att = lyr.feature.properties;
     $("#district_project_data").html(
       "<h6 class='text-center'> Attributes </h6><h6>District Name: " +
-        att.ADM2_EN +
-        "</h6>"
+      att.ADM2_EN +
+      "</h6>"
     );
   } else {
     $("#div_district_project_error").html("*******district name was not found");
@@ -535,12 +535,12 @@ function test_province_project_name(name) {
   }
 }
 
-$("#text_province_find_project").on("keyup paste click", function () {
+$("#text_province_find_project").on("keyup paste click", function() {
   var name = $("#text_province_find_project").val();
   test_province_project_name(name);
 });
 
-$("#btn_province_find_project").click(function () {
+$("#btn_province_find_project").click(function() {
   var name = $("#text_province_find_project").val();
   var lyr = return_province_project_name(name);
   if (lyr) {
@@ -558,8 +558,8 @@ $("#btn_province_find_project").click(function () {
     var att = lyr.feature.properties;
     $("#province_project_data").html(
       "<h6 class='text-center'> Attributes </h6><h6>province Name: " +
-        att.ADM1_EN +
-        "</h6>"
+      att.ADM1_EN +
+      "</h6>"
     );
   } else {
     $("#div_province_project_error").html("*******Province name was not found");
