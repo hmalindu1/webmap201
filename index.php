@@ -74,8 +74,8 @@
                 </div>
                 <div id="gnd_project_data"></div>
                 <li
+                id="gnd_dropdown"
                   class="main_menu btn btn-secondary dropdown"
-                  id="myDropdown"
                 >
                   <a
                     class="dropdown-toggle btn-myadd1"
