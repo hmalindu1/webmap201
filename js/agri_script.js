@@ -263,8 +263,8 @@ function returnGnd(json, layer) {
 function returnDsd(json, layer) {
   var att = json.properties;
   layer.setStyle({
-    color: "#0E51CD",
-    fillColor: "#0E51CD",
+    color: "#47B1D1",
+    fillColor: "#47B1D1",
     weight: 2,
   });
   layer.on("mouseover", function () {
@@ -276,7 +276,7 @@ function returnDsd(json, layer) {
   layer.on("mouseout", function () {
     //on mouseout function
     this.setStyle({
-      fillColor: "#0E51CD",
+      fillColor: "#47B1D1",
     });
   });
   layer.bindPopup("<h5>DSD Name : " + att.ADM3_EN + "</h5>");
