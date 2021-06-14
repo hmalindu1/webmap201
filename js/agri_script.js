@@ -103,7 +103,7 @@ $(document).ready(function () {
     "ESRI World Image Map": lyrEsri,
   };
 
-  gnd = L.geoJSON 
+  gnd = L.geoJSON
     .ajax("data/gnd.geojson", {
       onEachFeature: returnGnd,
     })
@@ -288,8 +288,8 @@ function returnDsd(json, layer) {
 function returnDistrict(json, layer) {
   var att = json.properties;
   layer.setStyle({
-    color: "#003EB3",
-    fillColor: "#003EB3",
+    color: "#47B1D1",
+    fillColor: "#47B1D1",
     weight: 2,
   });
   layer.on("mouseover", function () {
@@ -301,7 +301,7 @@ function returnDistrict(json, layer) {
   layer.on("mouseout", function () {
     //on mouseout function
     this.setStyle({
-      fillColor: "#003EB3",
+      fillColor: "#47B1D1",
     });
   });
   layer.bindPopup("<h5>District : " + att.ADM2_EN + "</h5>");
@@ -313,8 +313,8 @@ function returnDistrict(json, layer) {
 function returnProvince(json, layer) {
   var att = json.properties;
   layer.setStyle({
-    color: "#00328A",
-    fillColor: "#00328A",
+    color: "#47B1D1",
+    fillColor: "#47B1D1",
     weight: 2,
   });
   layer.on("mouseover", function () {
@@ -326,7 +326,7 @@ function returnProvince(json, layer) {
   layer.on("mouseout", function () {
     //on mouseout function
     this.setStyle({
-      fillColor: "#00328A",
+      fillColor: "#47B1D1",
     });
   });
   layer.bindPopup("<h5>Province : " + att.ADM1_EN + "</h5>");
@@ -431,7 +431,7 @@ $("#btn_dsd_find_project").click(function () {
     }
     lyr_dsd_search = L.geoJSON(lyr.toGeoJSON(), {
       style: {
-        color: "#303333",
+        color: "#68389b",
         weight: 5,
         opacity: 0.5,
       },
@@ -489,7 +489,7 @@ $("#btn_district_find_project").click(function () {
     }
     lyr_district_search = L.geoJSON(lyr.toGeoJSON(), {
       style: {
-        color: "#303333",
+        color: "#68389b",
         weight: 5,
         opacity: 0.5,
       },
@@ -547,7 +547,7 @@ $("#btn_province_find_project").click(function () {
     }
     lyr_province_search = L.geoJSON(lyr.toGeoJSON(), {
       style: {
-        color: "#303333",
+        color: "#68389b",
         weight: 5,
         opacity: 0.5,
       },
