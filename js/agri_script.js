@@ -183,9 +183,11 @@ $(document).ready(function () {
     if (e.name !== "GN Divisions") {
       $("#btn_gnd_find_project").attr("disabled", true);
       $("#text_gnd_find_project").attr("disabled", true);
+      $("#gnd_dropdown").addClass("disabled");
     } else {
       $("#btn_gnd_find_project").attr("disabled", false);
       $("#text_gnd_find_project").attr("disabled", false);
+      $("#gnd_dropdown").removeClass("disabled");
     }
     if (lyr_dsd_search) {
       lyr_dsd_search.remove();
