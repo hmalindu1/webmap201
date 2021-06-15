@@ -13,7 +13,7 @@ foreach ($result as $row) {
     unset($row['geom']);
     $geometry = $row['geojson'] = json_decode($row['geojson']);
     unset($row['geojson']);
-    $feature = ["type" => "Features", "geometry" => $geometry, "properties" => $row];
+    $feature = ["type" => "Feature", "geometry" => $geometry, "properties" => $row];
     array_push($features, $feature);
 }
 $featureCollection = ["type" => "FeatureCollection", "features" => $features];
