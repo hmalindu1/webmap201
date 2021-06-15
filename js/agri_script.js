@@ -111,7 +111,16 @@ $(document).ready(function() {
         gnd = L.geoJSON(json_gnd, {
           onEachFeature: returnGnd,
         }).addTo(mymap);
-        ctl_layers.addOverlay(gnd, "GN Divisions", "Overlays")
+        ctl_layers.addOverlay(gnd, "GN Divisions", "Overlays");
+        if (mymap.hasLayer(gnd)) {
+          console.log("yes");
+          $("#btn_dsd_find_project").attr("disabled", true);
+          $("#text_dsd_find_project").attr("disabled", true);
+          $("#btn_district_find_project").attr("disabled", true);
+          $("#text_district_find_project").attr("disabled", true);
+          $("#btn_province_find_project").attr("disabled", true);
+          $("#text_province_find_project").attr("disabled", true);
+        }
         ar_gnd_object_names.sort();
         $("#text_gnd_find_project").autocomplete({
           source: ar_gnd_object_names,
@@ -188,16 +197,6 @@ $(document).ready(function() {
     .groupedLayers(obj_basemap, shp_layers, options)
     .addTo(mymap);
 
-  if (mymap.hasLayer(gnd)) {
-    $("#btn_dsd_find_project").attr("disabled", true);
-    $("#text_dsd_find_project").attr("disabled", true);
-    $("#btn_district_find_project").attr("disabled", true);
-    $("#text_district_find_project").attr("disabled", true);
-    $("#btn_province_find_project").attr("disabled", true);
-    $("#text_province_find_project").attr("disabled", true);
-
-    // console.log("yes");
-  }
   // refresh overlay
   mymap.on("overlayadd", function(e) {
     if (lyr_gnd_search) {
