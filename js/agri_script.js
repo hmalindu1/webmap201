@@ -103,6 +103,22 @@ $(document).ready(function() {
     "ESRI World Image Map": lyrEsri,
   };
 
+  $.ajax({
+      url: 'load_gnd.php',
+      success: function(response) {
+        console.log(JSON.parse(response));
+        json_gnd = JSON.parse(response);
+        lyr_test = L.geoJSON(json_gnd).addTo(mymap);
+
+      },
+      error: function(xhr, status, error) {
+        alert("Error: " + error);
+      }
+
+    }
+
+  )
+
   gnd = L.geoJSON
     .ajax("data/gnd.geojson", {
       onEachFeature: returnGnd,
