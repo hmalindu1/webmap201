@@ -16,4 +16,5 @@ foreach ($result as $row) {
     $feature = ["type" => "Features", "geometry" => $geometry, "properties" => $row];
     array_push($features, $feature);
 }
-echo json_encode($features);
+$featureCollection = ["type" => "FeatureCollection", "features" => $features];
+echo json_encode($featureCollection);
