@@ -7,9 +7,12 @@ $dsn = "pgsql:host=localhost;dbname=webmap201;port=5432";
         ];
         $pdo = new PDO($dsn, 'postgres', '123', $opt);
 
-        $result = $pdo -> query("SELECT * FROM gnd");
+        $result = $pdo -> query("SELECT *, ST_AsGeoJSON(geom,5) AS geojson FROM gnd");
         foreach ($result AS $row){
             unset($row['geom']);
-            echo json_encode($row),"<br><br>";
-        }
+    $geometry = $row['geojson'] = json_decode($row['geojson']);
+    unset($row['geojson']);
+    $feature = ["type" => "features", "geometry" => $geometry, "properties" => $row];
+    echo json_encode($feature), "<br><br>";
+}
 ?>
