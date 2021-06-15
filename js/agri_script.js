@@ -124,19 +124,19 @@ $(document).ready(function() {
 
     }
 
-  )
+  );
 
-  gnd = L.geoJSON
-    .ajax("data/gnd.geojson", {
-      onEachFeature: returnGnd,
-    })
-    .addTo(mymap);
-  gnd.on("data:loaded", function() {
-    ar_gnd_object_names.sort();
-    $("#text_gnd_find_project").autocomplete({
-      source: ar_gnd_object_names,
-    });
-  });
+  /* gnd = L.geoJSON
+     .ajax("data/gnd.geojson", {
+       onEachFeature: returnGnd,
+     })
+     .addTo(mymap);
+   gnd.on("data:loaded", function() {
+     ar_gnd_object_names.sort();
+     $("#text_gnd_find_project").autocomplete({
+       source: ar_gnd_object_names,
+     });
+   });*/
 
   dsd = L.geoJSON.ajax("data/dsd.geojson", {
     onEachFeature: returnDsd,
@@ -170,7 +170,7 @@ $(document).ready(function() {
 
   shp_layers = {
     Overlays: {
-      "GN Divisions": gnd,
+      // "GN Divisions": gnd,
       "DS Divisions": dsd,
       District: district,
       Province: province,
