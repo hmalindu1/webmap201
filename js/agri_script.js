@@ -108,7 +108,14 @@ $(document).ready(function() {
       success: function(response) {
         console.log(JSON.parse(response));
         json_gnd = JSON.parse(response);
-        lyr_test = L.geoJSON(json_gnd).addTo(mymap);
+        gnd = L.geoJSON(json_gnd, {
+          onEachFeature: returnGnd,
+        }).addTo(mymap);
+        ctl_layers.addOverlay(gnd, "GN Divisions", "Overlays")
+        ar_gnd_object_names.sort();
+        $("#text_gnd_find_project").autocomplete({
+          source: ar_gnd_object_names,
+        });
 
       },
       error: function(xhr, status, error) {
