@@ -8,10 +8,12 @@ $opt = [
 $pdo = new PDO($dsn, 'postgres', '123', $opt);
 
 $result = $pdo->query("SELECT *, ST_AsGeoJSON(geom,5) AS geojson FROM gnd");
+$features = [];
 foreach ($result as $row) {
     unset($row['geom']);
     $geometry = $row['geojson'] = json_decode($row['geojson']);
     unset($row['geojson']);
     $feature = ["type" => "Features", "geometry" => $geometry, "properties" => $row];
-    echo json_encode($feature), "<br><br>";
+    array_push($features, $feature);
 }
+echo json_encode($features);
