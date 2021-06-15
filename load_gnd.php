@@ -12,6 +12,6 @@ foreach ($result as $row) {
     unset($row['geom']);
     $geometry = $row['geojson'] = json_decode($row['geojson']);
     unset($row['geojson']);
-    $feature = ["type" => "features", "geometry" => $geometry, "properties" => $row];
+    $feature = ["type" => "Features", "geometry" => $geometry, "properties" => $row];
     echo json_encode($feature), "<br><br>";
 }
