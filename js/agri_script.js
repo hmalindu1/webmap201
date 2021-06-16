@@ -108,7 +108,7 @@ $(document).ready(function() {
       data: {
         tbl: 'gnd'
       },
-      type: 'GET',
+      type: 'POST',
       success: function(response) {
         console.log(JSON.parse(response));
         json_gnd = JSON.parse(response);
@@ -151,42 +151,123 @@ $(document).ready(function() {
      });
    });*/
 
-  dsd = L.geoJSON.ajax("data/dsd.geojson", {
-    onEachFeature: returnDsd,
-  });
-  dsd.on("data:loaded", function() {
-    ar_dsd_object_names.sort();
-    $("#text_dsd_find_project").autocomplete({
-      source: ar_dsd_object_names,
-    });
-  });
+  $.ajax({
+      url: 'http://localhost/webmap201/php/load_data.php',
+      data: {
+        tbl: 'dsd'
+      },
+      type: 'POST',
+      success: function(response) {
+        console.log(JSON.parse(response));
+        json_dsd = JSON.parse(response);
+        dsd = L.geoJSON(json_dsd, {
+          onEachFeature: returnGnd,
+        });
+        ctl_layers.addOverlay(dsd, "DS Divisions", "Overlays");
+        ar_dsd_object_names.sort();
+        $("#text_dsd_find_project").autocomplete({
+          source: ar_dsd_object_names,
+        });
 
-  district = L.geoJSON.ajax("data/district.geojson", {
-    onEachFeature: returnDistrict,
-  });
-  district.on("data:loaded", function() {
-    ar_district_object_names.sort();
-    $("#text_district_find_project").autocomplete({
-      source: ar_district_object_names,
-    });
-  });
+      },
+      error: function(xhr, status, error) {
+        alert("Error: " + error);
+      }
 
-  province = L.geoJSON.ajax("data/province.geojson", {
-    onEachFeature: returnProvince,
-  });
-  province.on("data:loaded", function() {
-    ar_province_object_names.sort();
-    $("#text_province_find_project").autocomplete({
-      source: ar_province_object_names,
-    });
-  });
+    }
+
+  );
+
+  // dsd = L.geoJSON.ajax("data/dsd.geojson", {
+  //   onEachFeature: returnDsd,
+  // });
+  // dsd.on("data:loaded", function() {
+  //   ar_dsd_object_names.sort();
+  //   $("#text_dsd_find_project").autocomplete({
+  //     source: ar_dsd_object_names,
+  //   });
+  // });
+
+  $.ajax({
+      url: 'http://localhost/webmap201/php/load_data.php',
+      data: {
+        tbl: 'district'
+      },
+      type: 'POST',
+      success: function(response) {
+        console.log(JSON.parse(response));
+        json_district = JSON.parse(response);
+        district = L.geoJSON(json_district, {
+          onEachFeature: returnGnd,
+        });
+        ctl_layers.addOverlay(district, "District", "Overlays");
+        ar_district_object_names.sort();
+        $("#text_district_find_project").autocomplete({
+          source: ar_district_object_names,
+        });
+
+      },
+      error: function(xhr, status, error) {
+        alert("Error: " + error);
+      }
+
+    }
+
+  );
+
+  // district = L.geoJSON.ajax("data/district.geojson", {
+  //   onEachFeature: returnDistrict,
+  // });
+  // district.on("data:loaded", function() {
+  //   ar_district_object_names.sort();
+  //   $("#text_district_find_project").autocomplete({
+  //     source: ar_district_object_names,
+  //   });
+  // });
+
+  $.ajax({
+      url: 'http://localhost/webmap201/php/load_data.php',
+      data: {
+        tbl: 'province'
+      },
+      type: 'POST',
+      success: function(response) {
+        console.log(JSON.parse(response));
+        json_province = JSON.parse(response);
+        province = L.geoJSON(json_province, {
+          onEachFeature: returnGnd,
+        });
+        ctl_layers.addOverlay(province, "Province", "Overlays");
+        ar_province_object_names.sort();
+        $("#text_province_find_project").autocomplete({
+          source: ar_province_object_names,
+        });
+
+      },
+      error: function(xhr, status, error) {
+        alert("Error: " + error);
+      }
+
+    }
+
+  );
+
+  // province = L.geoJSON.ajax("data/province.geojson", {
+  //   onEachFeature: returnProvince,
+  // });
+  // province.on("data:loaded", function() {
+  //   ar_province_object_names.sort();
+  //   $("#text_province_find_project").autocomplete({
+  //     source: ar_province_object_names,
+  //   });
+  // });
 
   shp_layers = {
     Overlays: {
       // "GN Divisions": gnd,
-      "DS Divisions": dsd,
-      District: district,
-      Province: province,
+      // "DS Divisions": dsd,
+      // District: district,
+      // Province: province,
     },
   };
 
