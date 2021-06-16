@@ -1,6 +1,6 @@
 <?php
-if (isset($_GET['tbl'])) {
-    $table = $_GET['tbl'];
+if (isset($_POST['tbl'])) {
+    $table = $_POST['tbl'];
     $dsn = "pgsql:host=localhost;dbname=webmap201;port=5432";
     $opt = [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
