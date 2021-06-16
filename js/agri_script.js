@@ -104,7 +104,11 @@ $(document).ready(function() {
   };
 
   $.ajax({
-      url: 'http://localhost/webmap201/php/load_gnd.php',
+      url: 'http://localhost/webmap201/php/load_data.php',
+      data: {
+        tbl: 'gnd'
+      },
+      type: 'GET',
       success: function(response) {
         console.log(JSON.parse(response));
         json_gnd = JSON.parse(response);
