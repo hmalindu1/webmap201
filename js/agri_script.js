@@ -130,6 +130,87 @@ $(document).ready(function() {
           source: ar_gnd_object_names,
         });
 
+        $.ajax({
+            url: 'http://localhost/webmap201/php/load_data.php',
+            data: {
+              tbl: 'dsd'
+            },
+            type: 'POST',
+            success: function(response) {
+              console.log(JSON.parse(response));
+              json_dsd = JSON.parse(response);
+              dsd = L.geoJSON(json_dsd, {
+                onEachFeature: return_dsd
+              });
+              ctl_layers.addOverlay(dsd, "DS Divisions", "Overlays");
+              ar_dsd_object_names.sort();
+              $("#text_dsd_find_project").autocomplete({
+                source: ar_dsd_object_names,
+              });
+
+              $.ajax({
+                  url: 'http://localhost/webmap201/php/load_data.php',
+                  data: {
+                    tbl: 'district'
+                  },
+                  type: 'POST',
+                  success: function(response) {
+                    console.log(JSON.parse(response));
+                    json_district = JSON.parse(response);
+                    district = L.geoJSON(json_district, {
+                      onEachFeature: return_district
+                    });
+                    ctl_layers.addOverlay(district, "District", "Overlays");
+                    ar_district_object_names.sort();
+                    $("#text_district_find_project").autocomplete({
+                      source: ar_district_object_names,
+                    });
+
+                    $.ajax({
+                        url: 'http://localhost/webmap201/php/load_data.php',
+                        data: {
+                          tbl: 'province'
+                        },
+                        type: 'POST',
+                        success: function(response) {
+                          console.log(JSON.parse(response));
+                          json_province = JSON.parse(response);
+                          province = L.geoJSON(json_province, {
+                            onEachFeature: return_province
+                          });
+                          ctl_layers.addOverlay(province, "Province", "Overlays");
+                          ar_province_object_names.sort();
+                          $("#text_province_find_project").autocomplete({
+                            source: ar_province_object_names,
+                          });
+
+                        },
+                        error: function(xhr, status, error) {
+                          alert("Error: " + error);
+                        }
+
+                      }
+
+                    );
+
+                  },
+                  error: function(xhr, status, error) {
+                    alert("Error: " + error);
+                  }
+
+                }
+
+              );
+
+            },
+            error: function(xhr, status, error) {
+              alert("Error: " + error);
+            }
+
+          }
+
+        );
+
       },
       error: function(xhr, status, error) {
         alert("Error: " + error);
@@ -151,32 +232,7 @@ $(document).ready(function() {
      });
    });*/
 
-  $.ajax({
-      url: 'http://localhost/webmap201/php/load_data.php',
-      data: {
-        tbl: 'dsd'
-      },
-      type: 'POST',
-      success: function(response) {
-        console.log(JSON.parse(response));
-        json_dsd = JSON.parse(response);
-        dsd = L.geoJSON(json_dsd, {
-          onEachFeature: return_dsd
-        });
-        ctl_layers.addOverlay(dsd, "DS Divisions", "Overlays");
-        ar_dsd_object_names.sort();
-        $("#text_dsd_find_project").autocomplete({
-          source: ar_dsd_object_names,
-        });
 
-      },
-      error: function(xhr, status, error) {
-        alert("Error: " + error);
-      }
-
-    }
-
-  );
 
   // dsd = L.geoJSON.ajax("data/dsd.geojson", {
   //   onEachFeature: return_dsd,
@@ -188,32 +244,7 @@ $(document).ready(function() {
   //   });
   // });
 
-  $.ajax({
-      url: 'http://localhost/webmap201/php/load_data.php',
-      data: {
-        tbl: 'district'
-      },
-      type: 'POST',
-      success: function(response) {
-        console.log(JSON.parse(response));
-        json_district = JSON.parse(response);
-        district = L.geoJSON(json_district, {
-          onEachFeature: return_district
-        });
-        ctl_layers.addOverlay(district, "District", "Overlays");
-        ar_district_object_names.sort();
-        $("#text_district_find_project").autocomplete({
-          source: ar_district_object_names,
-        });
 
-      },
-      error: function(xhr, status, error) {
-        alert("Error: " + error);
-      }
-
-    }
-
-  );
 
   // district = L.geoJSON.ajax("data/district.geojson", {
   //   onEachFeature: return_district,
@@ -225,32 +256,7 @@ $(document).ready(function() {
   //   });
   // });
 
-  $.ajax({
-      url: 'http://localhost/webmap201/php/load_data.php',
-      data: {
-        tbl: 'province'
-      },
-      type: 'POST',
-      success: function(response) {
-        console.log(JSON.parse(response));
-        json_province = JSON.parse(response);
-        province = L.geoJSON(json_province, {
-          onEachFeature: return_province
-        });
-        ctl_layers.addOverlay(province, "Province", "Overlays");
-        ar_province_object_names.sort();
-        $("#text_province_find_project").autocomplete({
-          source: ar_province_object_names,
-        });
 
-      },
-      error: function(xhr, status, error) {
-        alert("Error: " + error);
-      }
-
-    }
-
-  );
 
   // province = L.geoJSON.ajax("data/province.geojson", {
   //   onEachFeature: return_province
