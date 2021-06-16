@@ -113,7 +113,7 @@ $(document).ready(function() {
         console.log(JSON.parse(response));
         json_gnd = JSON.parse(response);
         gnd = L.geoJSON(json_gnd, {
-          onEachFeature: returnGnd,
+          onEachFeature: return_gnd
         }).addTo(mymap);
         ctl_layers.addOverlay(gnd, "GN Divisions", "Overlays");
         if (mymap.hasLayer(gnd)) {
@@ -141,7 +141,7 @@ $(document).ready(function() {
 
   /* gnd = L.geoJSON
      .ajax("data/gnd.geojson", {
-       onEachFeature: returnGnd,
+       onEachFeature: return_gnd,
      })
      .addTo(mymap);
    gnd.on("data:loaded", function() {
@@ -161,7 +161,7 @@ $(document).ready(function() {
         console.log(JSON.parse(response));
         json_dsd = JSON.parse(response);
         dsd = L.geoJSON(json_dsd, {
-          onEachFeature: returnGnd,
+          onEachFeature: return_dsd
         });
         ctl_layers.addOverlay(dsd, "DS Divisions", "Overlays");
         ar_dsd_object_names.sort();
@@ -179,7 +179,7 @@ $(document).ready(function() {
   );
 
   // dsd = L.geoJSON.ajax("data/dsd.geojson", {
-  //   onEachFeature: returnDsd,
+  //   onEachFeature: return_dsd,
   // });
   // dsd.on("data:loaded", function() {
   //   ar_dsd_object_names.sort();
@@ -198,7 +198,7 @@ $(document).ready(function() {
         console.log(JSON.parse(response));
         json_district = JSON.parse(response);
         district = L.geoJSON(json_district, {
-          onEachFeature: returnGnd,
+          onEachFeature: return_district
         });
         ctl_layers.addOverlay(district, "District", "Overlays");
         ar_district_object_names.sort();
@@ -216,7 +216,7 @@ $(document).ready(function() {
   );
 
   // district = L.geoJSON.ajax("data/district.geojson", {
-  //   onEachFeature: returnDistrict,
+  //   onEachFeature: return_district,
   // });
   // district.on("data:loaded", function() {
   //   ar_district_object_names.sort();
@@ -235,7 +235,7 @@ $(document).ready(function() {
         console.log(JSON.parse(response));
         json_province = JSON.parse(response);
         province = L.geoJSON(json_province, {
-          onEachFeature: returnGnd,
+          onEachFeature: return_province
         });
         ctl_layers.addOverlay(province, "Province", "Overlays");
         ar_province_object_names.sort();
@@ -253,7 +253,7 @@ $(document).ready(function() {
   );
 
   // province = L.geoJSON.ajax("data/province.geojson", {
-  //   onEachFeature: returnProvince,
+  //   onEachFeature: return_province
   // });
   // province.on("data:loaded", function() {
   //   ar_province_object_names.sort();
@@ -342,7 +342,7 @@ $(document).ready(function() {
 
 // *************  conrol function on GND layers **********//
 
-function returnGnd(json, layer) {
+function return_gnd(json, layer) {
   var att = json.properties;
   layer.setStyle({
     color: "#47B1D1",
@@ -369,7 +369,7 @@ function returnGnd(json, layer) {
 
 // *************  conrol function on DSD layers **********//
 
-function returnDsd(json, layer) {
+function return_dsd(json, layer) {
   var att = json.properties;
   layer.setStyle({
     color: "#47B1D1",
@@ -388,13 +388,13 @@ function returnDsd(json, layer) {
       fillColor: "#47B1D1",
     });
   });
-  layer.bindPopup("<h5>DSD Name : " + att.ADM3_EN + "</h5>");
-  ar_dsd_object_names.push(att.ADM3_EN);
+  layer.bindPopup("<h5>DSD Name : " + att.adm3_en + "</h5>");
+  ar_dsd_object_names.push(att.adm3_en);
 }
 
 // *************  conrol function on District layers **********//
 
-function returnDistrict(json, layer) {
+function return_district(json, layer) {
   var att = json.properties;
   layer.setStyle({
     color: "#47B1D1",
@@ -413,13 +413,13 @@ function returnDistrict(json, layer) {
       fillColor: "#47B1D1",
     });
   });
-  layer.bindPopup("<h5>District : " + att.ADM2_EN + "</h5>");
-  ar_district_object_names.push(att.ADM2_EN);
+  layer.bindPopup("<h5>District : " + att.adm2_en + "</h5>");
+  ar_district_object_names.push(att.adm2_en);
 }
 
 // *************  conrol function on District layers **********//
 
-function returnProvince(json, layer) {
+function return_province(json, layer) {
   var att = json.properties;
   layer.setStyle({
     color: "#47B1D1",
@@ -438,8 +438,8 @@ function returnProvince(json, layer) {
       fillColor: "#47B1D1",
     });
   });
-  layer.bindPopup("<h5>Province : " + att.ADM1_EN + "</h5>");
-  ar_province_object_names.push(att.ADM1_EN);
+  layer.bindPopup("<h5>Province : " + att.adm1_en + "</h5>");
+  ar_province_object_names.push(att.adm1_en);
 }
 
 //******************** Search function on GND layer */
@@ -505,7 +505,7 @@ $("#btn_gnd_find_project").click(function() {
 function return_dsd_project_name(name) {
   var ar_layers = dsd.getLayers();
   for (let i = 0; i < ar_layers.length; i++) {
-    var feature_name = ar_layers[i].feature.properties.ADM3_EN;
+    var feature_name = ar_layers[i].feature.properties.adm3_en;
 
     if (feature_name == name) {
       return ar_layers[i];
@@ -549,7 +549,7 @@ $("#btn_dsd_find_project").click(function() {
     var att = lyr.feature.properties;
     $("#dsd_project_data").html(
       "<h6 class='text-center'> Attributes </h6><h6>Project ID: " +
-      att.ADM3_EN +
+      att.adm3_en +
       "</h6>"
     );
   } else {
@@ -562,7 +562,7 @@ $("#btn_dsd_find_project").click(function() {
 function return_district_project_name(name) {
   var ar_layers = district.getLayers();
   for (let i = 0; i < ar_layers.length; i++) {
-    var feature_name = ar_layers[i].feature.properties.ADM2_EN;
+    var feature_name = ar_layers[i].feature.properties.adm2_en;
 
     if (feature_name == name) {
       return ar_layers[i];
@@ -607,7 +607,7 @@ $("#btn_district_find_project").click(function() {
     var att = lyr.feature.properties;
     $("#district_project_data").html(
       "<h6 class='text-center'> Attributes </h6><h6>District Name: " +
-      att.ADM2_EN +
+      att.adm2_en +
       "</h6>"
     );
   } else {
@@ -620,7 +620,7 @@ $("#btn_district_find_project").click(function() {
 function return_province_project_name(name) {
   var ar_layers = province.getLayers();
   for (let i = 0; i < ar_layers.length; i++) {
-    var feature_name = ar_layers[i].feature.properties.ADM1_EN;
+    var feature_name = ar_layers[i].feature.properties.adm1_en;
 
     if (feature_name == name) {
       return ar_layers[i];
@@ -665,7 +665,7 @@ $("#btn_province_find_project").click(function() {
     var att = lyr.feature.properties;
     $("#province_project_data").html(
       "<h6 class='text-center'> Attributes </h6><h6>province Name: " +
-      att.ADM1_EN +
+      att.adm1_en +
       "</h6>"
     );
   } else {
