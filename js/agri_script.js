@@ -700,6 +700,20 @@ $("#btn_province_find_project").click(function() {
 
 $("#dsd_2015_livestock_production").click(function() {
   $("#dlg_modal").show();
+  $.ajax({
+    url: 'http://localhost/webmap201/php/load_table.php',
+    data: {
+      tbl: "livestock_population_kegalle_2015"
+    },
+    type: "POST",
+    success: function(response) {
+      $("#table_data").html(response);
+    },
+    error: function(xhr, status, error) {
+      $("#table_data").html("ERROR: " + error);
+    }
+
+  })
 })
 
 $("#btn_close_modal").click(function() {
