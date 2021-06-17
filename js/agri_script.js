@@ -697,3 +697,11 @@ $("#btn_province_find_project").click(function() {
     $("#div_province_project_error").html("*******Province name was not found");
   }
 });
+
+$("#dsd_2015_livestock_production").click(function() {
+  $("#dlg_modal").show();
+})
+
+$("#btn_close_modal").click(function() {
+  $("#dlg_modal").hide();
+})
