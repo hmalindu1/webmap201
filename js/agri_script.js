@@ -118,12 +118,19 @@ $(document).ready(function() {
         ctl_layers.addOverlay(gnd, "GN Divisions", "Overlays");
         if (mymap.hasLayer(gnd)) {
           console.log("yes");
+          // Disabling the DS panel
           $("#btn_dsd_find_project").attr("disabled", true);
           $("#text_dsd_find_project").attr("disabled", true);
+          $("#dsd_dropdown").addClass("disabled");
+          // Disabling the Distirct panel
           $("#btn_district_find_project").attr("disabled", true);
           $("#text_district_find_project").attr("disabled", true);
+          $("#district_dropdown").addClass("disabled");
+          // Disabling the Province panel panel
           $("#btn_province_find_project").attr("disabled", true);
           $("#text_province_find_project").attr("disabled", true);
+          $("#province_dropdown").addClass("disabled");
+
         }
         ar_gnd_object_names.sort();
         $("#text_gnd_find_project").autocomplete({
@@ -308,9 +315,13 @@ $(document).ready(function() {
     if (e.name !== "DS Divisions") {
       $("#btn_dsd_find_project").attr("disabled", true);
       $("#text_dsd_find_project").attr("disabled", true);
+      $("#dsd_dropdown").addClass("disabled");
+
     } else {
       $("#btn_dsd_find_project").attr("disabled", false);
       $("#text_dsd_find_project").attr("disabled", false);
+      $("#dsd_dropdown").removeClass("disabled");
+
     }
     if (lyr_district_search) {
       lyr_district_search.remove();
@@ -318,9 +329,13 @@ $(document).ready(function() {
     if (e.name !== "District") {
       $("#btn_district_find_project").attr("disabled", true);
       $("#text_district_find_project").attr("disabled", true);
+      $("#district_dropdown").addClass("disabled");
+
     } else {
       $("#btn_district_find_project").attr("disabled", false);
       $("#text_district_find_project").attr("disabled", false);
+      $("#district_dropdown").removeClass("disabled");
+
     }
     if (lyr_province_search) {
       lyr_province_search.remove();
@@ -328,9 +343,13 @@ $(document).ready(function() {
     if (e.name !== "Province") {
       $("#btn_province_find_project").attr("disabled", true);
       $("#text_province_find_project").attr("disabled", true);
+      $("#province_dropdown").addClass("disabled");
+
     } else {
       $("#btn_province_find_project").attr("disabled", false);
       $("#text_province_find_project").attr("disabled", false);
+      $("#province_dropdown").removeClass("disabled");
+
     }
     console.log(e);
   });
