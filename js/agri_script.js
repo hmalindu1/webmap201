@@ -703,7 +703,9 @@ $("#dsd_2015_livestock_production").click(function() {
   $.ajax({
     url: 'http://localhost/webmap201/php/load_table.php',
     data: {
-      tbl: "livestock_population_kegalle_2015"
+      tbl: "livestock_population_kegalle_2015",
+      title: 'DS Division Livestock Production 2015',
+      flds: '"d.s. division" AS "DS Division", cattle AS "Cattle", buffaloes AS "Buffaloes", goat AS "Goat" , pigs AS "Pigs" , "cocks / hens" AS "Cocks / Hens" , duck AS "Ducks" , turkey AS "Turkey"'
     },
     type: "POST",
     success: function(response) {
