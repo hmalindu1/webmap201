@@ -710,9 +710,11 @@ $("#dsd_2015_livestock_production").click(function() {
     type: "POST",
     success: function(response) {
       $("#table_data").html(response);
+      $("#dlg_modal").show();
     },
     error: function(xhr, status, error) {
       $("#table_data").html("ERROR: " + error);
+      $("#dlg_modal").show();
     }
 
   })
