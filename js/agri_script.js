@@ -699,7 +699,6 @@ $("#btn_province_find_project").click(function() {
 });
 
 $("#dsd_2015_livestock_production").click(function() {
-  $("#dlg_modal").show();
   $.ajax({
     url: 'http://localhost/webmap201/php/load_table.php',
     data: {
