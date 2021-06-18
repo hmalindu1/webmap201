@@ -1,4 +1,10 @@
 <?php
+if (isset($_POST['flds'])) {
+    $fields = $_POST['flds'];
+} else {
+    $fields = "*";
+
+}
 if (isset($_POST['tbl'])) {
     $table = $_POST['tbl'];
     $dsn = "pgsql:host=localhost;dbname=webmap201;port=5432";
