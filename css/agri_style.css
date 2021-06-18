@@ -199,6 +199,6 @@ input:focus {
     overflow-y: auto;
 }
 
-.tblHeader {
-    background-color: wheat;
+.tbl_header {
+    background-color: rgb(201, 201, 201);
 }
