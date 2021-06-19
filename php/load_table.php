@@ -10,6 +10,7 @@ if (isset($_POST['where'])) {
 } else {
     $where = "";
 }
+
 if (isset($_POST['tbl'])) {
     $table = $_POST['tbl'];
     $dsn = "pgsql:host=localhost;dbname=webmap201;port=5432";
@@ -30,26 +31,24 @@ if (isset($_POST['tbl'])) {
         $return_table .= "<table class='table table-hover'>";
         $row = $result->fetch();
         if ($row) {
-        $return_table .= "<tr class='tbl_header'>";
-        foreach ($row as $key => $value) {
-            $return_table .= "<th>{$key}</th>";
-        }
-        $return_table .= "</tr>";
-        $return_table .= "<tr>";
+            foreach ($row as $key => $val) {
+                $return_table .= "<th>{$key}</th>";
+            }
+            $return_table .= "</tr>";
+            $return_table .= "<tr>";
             foreach ($row as $key => $val) {
                 $return_table .= "<td>{$val}</td>";
             }
             $return_table .= "</tr>";
-    }
-    foreach ($result as $row) {
-        $return_table .= "<tr>";
-        foreach ($row as $key => $value) {
-            $return_table .= "<td>{$value}</td>";
         }
-        $return_table .= "</tr>";
-    }
-    echo $return_table;
-    $return_table .= "</table>";
+        foreach ($result as $row) {
+            $return_table .= "<tr>";
+            foreach ($row as $key => $val) {
+                $return_table .= "<td>{$val}</td>";
+            }
+            $return_table .= "</tr>";
+        }
+        $return_table .= "</table>";
         echo $return_table;
     } catch (PDOException $e) {
         echo "ERROR: " . $e->getMessage();
