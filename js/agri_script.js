@@ -775,4 +775,4 @@ $("#btn_close_modal").click(function() {
 
 $("#btn_close_modal").click(function() {
   $("#dlg_modal").hide();
-})
+}) */
