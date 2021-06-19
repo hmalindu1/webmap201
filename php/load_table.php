@@ -23,10 +23,10 @@ if (isset($_POST['tbl'])) {
     try {
         $result = $pdo->query("SELECT {$fields} FROM {$table}{$where}");
         if (isset($_POST['title'])) {
-        $return_table = "<h2 class='text-center'>{$_POST['title']}</h2>";
-    } else {
-        $return_table = "";
-    }
+            $return_table = "<h2 class='tbl_header text-center'>{$_POST['title']}</h2>";
+        } else {
+            $return_table = "";
+        }
     $return_table .= "<table class = 'table table-hover'>";
     $row = $result->fetch();
     if ($row) {
