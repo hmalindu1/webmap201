@@ -49,6 +49,10 @@ if (isset($_POST['tbl'])) {
     }
     echo $return_table;
     $return_table .= "</table>";
+        echo $return_table;
+    } catch (PDOException $e) {
+        echo "ERROR: " . $e->getMessage();
+    }
 } else {
     echo "ERROR: No table parameter included with request";
 }
