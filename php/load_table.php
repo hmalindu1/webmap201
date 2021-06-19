@@ -27,9 +27,9 @@ if (isset($_POST['tbl'])) {
         } else {
             $return_table = "";
         }
-    $return_table .= "<table class = 'table table-hover'>";
-    $row = $result->fetch();
-    if ($row) {
+        $return_table .= "<table class='table table-hover'>";
+        $row = $result->fetch();
+        if ($row) {
         $return_table .= "<tr class='tbl_header'>";
         foreach ($row as $key => $value) {
             $return_table .= "<th>{$key}</th>";
