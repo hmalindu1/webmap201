@@ -20,8 +20,9 @@ if (isset($_POST['tbl'])) {
     ];
     $pdo = new PDO($dsn, 'postgres', '123', $opt);
 
-    $result = $pdo->query("SELECT {$fields} FROM {$table}");
-    if (isset($_POST['title'])) {
+    try {
+        $result = $pdo->query("SELECT {$fields} FROM {$table}{$where}");
+        if (isset($_POST['title'])) {
         $return_table = "<h2 class='text-center'>{$_POST['title']}</h2>";
     } else {
         $return_table = "";
