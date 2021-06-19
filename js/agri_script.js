@@ -699,6 +699,60 @@ $("#btn_province_find_project").click(function() {
 });
 
 $("#dsd_2015_livestock_production").click(function() {
+  var search_id = $("#text_dsd_find_project").val(); 
+  var whr;
+  if (search_id) {
+    whr = `"d.s. division"='${search_id}'`
+    $.ajax({
+      url: 'http://localhost/webmap201/php/load_table.php',
+      data: {
+        tbl: "livestock_population_kegalle_2015",
+        title: `${search_id} Livestock Production 2015`,
+        flds: '"d.s. division" AS "DS Division", cattle AS "Cattle", buffaloes AS "Buffaloes", goat AS "Goat" , pigs AS "Pigs" , "cocks / hens" AS "Cocks / Hens" , duck AS "Ducks" , turkey AS "Turkey"',
+        where: whr 
+      },
+      type: "POST",
+      success: function(response) {
+        console.log(response);
+        $("#table_data").html(response);
+        $("#dlg_modal").show();
+      },
+      error: function(xhr, status, error) {
+        $("#table_data").html("ERROR: " + error);
+        $("#dlg_modal").show();
+      }
+
+    })
+  } else {
+    $.ajax({
+      url: 'http://localhost/webmap201/php/load_table.php',
+      data: {
+        tbl: "livestock_population_kegalle_2015",
+        title: 'Livestock Production 2015',
+        flds: '"d.s. division" AS "DS Division", cattle AS "Cattle", buffaloes AS "Buffaloes", goat AS "Goat" , pigs AS "Pigs" , "cocks / hens" AS "Cocks / Hens" , duck AS "Ducks" , turkey AS "Turkey"',
+      },
+      type: "POST",
+      success: function(response) {
+        console.log(response);
+        $("#table_data").html(response);
+        $("#dlg_modal").show();
+      },
+      error: function(xhr, status, error) {
+        $("#table_data").html("ERROR: " + error);
+        $("#dlg_modal").show();
+      }
+
+    })
+
+  }
+})
+
+
+$("#btn_close_modal").click(function() {
+  $("#dlg_modal").hide();
+})
+
+/* $("#dsd_2015_livestock_production").click(function() {
   $.ajax({
     url: 'http://localhost/webmap201/php/load_table.php',
     data: {
