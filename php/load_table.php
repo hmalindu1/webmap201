@@ -35,6 +35,10 @@ if (isset($_POST['tbl'])) {
         }
         $return_table .= "</tr>";
         $return_table .= "<tr>";
+            foreach ($row as $key => $val) {
+                $return_table .= "<td>{$val}</td>";
+            }
+            $return_table .= "</tr>";
     }
     foreach ($result as $row) {
         $return_table .= "<tr>";
