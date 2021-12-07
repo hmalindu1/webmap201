@@ -776,3 +776,65 @@ $("#btn_close_modal").click(function() {
 $("#btn_close_modal").click(function() {
   $("#dlg_modal").hide();
 }) */
+
+/*
+var json = [{
+  "Land Information": [{
+    "Land use classification": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Land Ownership": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }],
+  "Agriculture": [{
+    "Machineries": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Production": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Insurance": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Extension": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Schema": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Export": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }],
+  "Livestock": [{
+    "Forage Cultivation": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Special Programs": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Small Industries": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Population": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Services": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }],
+  "Irrigation": [{
+    "Ornemantel Fisheries": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Irrigation Projects": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Minor Irrigation": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }, {
+    "Inland Fisheries": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+  }],
+}]*/
+
+/*
+var list = [{
+  "topic": "Land Information",
+  "subtopic": ["Land use classification", "Land Ownership"],
+  "years": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+}, {
+  "topic": "Agriculture",
+  "subtopic": ["Machineries", "Production", "Insurance", "Extension", "Schema", "Export"],
+  "years": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+}, {
+  "topic": "Livestock",
+  "subtopic": ["Forage Cultivation", "Special Programs", "Small Industries", "Population", "Services"],
+  "years": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+}, {
+  "topic": "Irrigation",
+  "subtopic": ["Ornemantel Fisheries", "Irrigation Projects", "Minor Irrigation", "Inland Fisheries"],
+  "years": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+}]
+*/
