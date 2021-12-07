@@ -2,1916 +2,330 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Agriculture</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
-    <link rel="stylesheet" href="src/leaflet.css" />
-    <link href="src/all.css" rel="stylesheet" />
 
-    <link rel="stylesheet" href="src/plugins/L.Control.MousePosition.css" />
-    <link rel="stylesheet" href="src/plugins/L.Control.Sidebar.css" />
-    <link rel="stylesheet" href="src/plugins/easy-button.css" />
-    <link rel="stylesheet" href="src/plugins/L.Control.Pan.css" />
-    <link rel="stylesheet" href="src/plugins/L.Control.Zoomslider.css" />
-    <link rel="stylesheet" href="src/plugins/leaflet-control-boxzoom.css" />
-    <link rel="stylesheet" href="src/plugins/leaflet.groupedlayercontrol.css" />
-    <link rel="stylesheet" href="css/agri_style.css" />
-
-    <script src="src/jquery-3.6.0.js"></script>
-
-    <link rel="stylesheet" href="src/jquery-ui.min.css" />
-    <script src="src/jquery-ui.min.js"></script>
-
-    <script src="src/bootstrap.bundle.min.js"></script>
-    <link rel="stylesheet" href="src/css/bootstrap.css" />
-
-    <script src="src/leaflet-src.js"></script>
-    <script src="src/all.js"></script>
-
-    <script src="src/plugins/L.Control.MousePosition.js"></script>
-    <script src="src/plugins/L.Control.Sidebar.js"></script>
-    <script src="src/plugins/easy-button.js"></script>
-    <script src="src/plugins/L.Control.Pan.js"></script>
-    <script src="src/plugins/SmoothWheelZoom.js"></script>
-    <script src="src/plugins/leaflet-providers.js"></script>
-    <script src="src/plugins/leaflet.ajax.min.js"></script>
-    <script src="src/plugins/leaflet-control-boxzoom.js"></script>
-    <script src="src/plugins/leaflet.groupedlayercontrol.js"></script>
-
-    <style></style>
 </head>
 
 <body>
-    <div id="header" class="col-md-12">
-        <h2 class="text-center">Agricultural Information System (AIS)</h2>
-    </div>
-    <div>
-        <div class="container">
-            <div class="row">
-                <div id="side_bar">
-                    <div id="div_project" class="col-12">
-                        <div id="div_gnd_project_label" class="text-center col-12">
-                            <h5>GN Divisions</h5>
-                            <div id="div_gnd_project_error" class="errorMsg col-12"></div>
-                            <div id="div_gnd_find_project" class="row form-group has-error">
-                                <div class="col-6">
-                                    <input type="text" id="text_gnd_find_project" class="form-control" placeholder="GND Name" />
-                                </div>
-                                <div class="col-6">
-                                    <button id="btn_gnd_find_project" class="btn btn-primary" disabled>
-                                        Find
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="gnd_project_data"></div>
-                            <li id="gnd_dropdown" class="main_menu btn btn-secondary dropdown">
-                                <a class="dropdown-toggle btn-myadd1" href="#" data-bs-toggle="dropdown">
-                                    Spatial Unit
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Land information
-                                            <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Land Use Classification
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Land Ownership
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Agriculture
-                                            <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Machineries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Production
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Insurance
-                                                    <i class="fa fa-solid fa fa-caret-right"></i>
-                                                </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Extension
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Schema <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Export <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Livestock <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Forage Cultivations
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Special Programs
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Small Industries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i>
-                                                </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Population
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Services
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Irrigation <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Ornamental Fisheries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Irrigation Projects
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Minor Irrigations
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Inland Fisheries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>
-                    <div id="div_project" class="col-12">
-                        <div id="div_dsd_project_label" class="text-center col-12">
-                            <h5>DS Divisions</h5>
-                            <div id="div_dsd_project_error" class="errorMsg col-12"></div>
-                            <div id="div_dsd_find_project" class="row form-group has-error">
-                                <div class="col-6">
-                                    <input type="text" id="text_dsd_find_project" class="form-control" placeholder="DSD Name" />
-                                </div>
-                                <div class="col-6">
-                                    <button id="btn_dsd_find_project" class="btn btn-primary" disabled>
-                                        Find
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="dsd_project_data"></div>
-                            <li id="dsd_dropdown" class="main_menu btn btn-secondary dropdown">
-                                <a class="dropdown-toggle btn-myadd1" href="#" data-bs-toggle="dropdown">
-                                    Spatial Unit
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Land information
-                                            <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Land Use Classification
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Land Ownership
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Agriculture
-                                            <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Machineries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Production
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Insurance
-                                                    <i class="fa fa-solid fa fa-caret-right"></i>
-                                                </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Extension
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Schema <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Export <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Livestock <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Forage Cultivations
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Special Programs
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Small Industries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i>
-                                                </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Population
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li id="dsd_2015_livestock_production">
-                                                        <a class="dropdown-item">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Services
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Irrigation <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Ornamental Fisheries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Irrigation Projects
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Minor Irrigations
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Inland Fisheries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>
-                    <div id="div_project" class="col-12">
-                        <div id="div_district_project_label" class="text-center col-12">
-                            <h5>District</h5>
-                            <div id="div_district_project_error" class="errorMsg col-12"></div>
-                            <div id="div_district_find_project" class="row form-group has-error">
-                                <div class="col-6">
-                                    <input type="text" id="text_district_find_project" class="form-control" placeholder="District" />
-                                </div>
-                                <div class="col-6">
-                                    <button id="btn_district_find_project" class="btn btn-primary" disabled>
-                                        Find
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="district_project_data"></div>
-                            <li id="district_dropdown" class="main_menu btn btn-secondary dropdown">
-                                <a class="dropdown-toggle btn-myadd1" href="#" data-bs-toggle="dropdown">
-                                    Spatial Unit
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Land information
-                                            <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Land Use Classification
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Land Ownership
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Agriculture
-                                            <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Machineries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Production
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Insurance
-                                                    <i class="fa fa-solid fa fa-caret-right"></i>
-                                                </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Extension
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Schema <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Export <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Livestock <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Forage Cultivations
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Special Programs
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Small Industries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i>
-                                                </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Population
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Services
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Irrigation <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Ornamental Fisheries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Irrigation Projects
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Minor Irrigations
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Inland Fisheries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>
-                    <div id="div_project" class="col-12">
-                        <div id="div_province_project_label" class="text-center col-12">
-                            <h5>Province</h5>
-                            <div id="div_province_project_error" class="errorMsg col-12"></div>
-                            <div id="div_province_find_project" class="row form-group has-error">
-                                <div class="col-6">
-                                    <input type="text" id="text_province_find_project" class="form-control" placeholder="Province" />
-                                </div>
-                                <div class="col-6">
-                                    <button id="btn_province_find_project" class="btn btn-primary" disabled>
-                                        Find
-                                    </button>
-                                </div>
-                            </div>
-                            <div id="province_project_data"></div>
-                            <li id="province_dropdown" class="main_menu btn btn-secondary dropdown">
-                                <a class="dropdown-toggle btn-myadd1" href="#" data-bs-toggle="dropdown">
-                                    Spatial Unit
-                                </a>
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Land information
-                                            <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Land Use Classification
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Land Ownership
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Agriculture
-                                            <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Machineries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Production
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Insurance
-                                                    <i class="fa fa-solid fa fa-caret-right"></i>
-                                                </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Extension
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Schema <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Export <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Livestock <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Forage Cultivations
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Special Programs
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Small Industries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i>
-                                                </a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Population
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Services
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                    <li>
-                                        <a class="dropdown-item" href="#">
-                                            Irrigation <i class="fa fa-solid fa fa-caret-right"></i>
-                                        </a>
-                                        <ul class="submenu dropdown-menu">
-                                            <li>
-                                                <a class="dropdown-item" href="#">Ornamental Fisheries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Irrigation Projects
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Minor Irrigations
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                            <li>
-                                                <a class="dropdown-item" href="#">Inland Fisheries
-                                                    <i class="fa fa-solid fa fa-caret-right"></i></a>
-                                                <ul class="submenu dropdown-menu">
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">All</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2015</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2016</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2017</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2018</a>
-                                                    </li>
-                                                    <li>
-                                                        <a class="dropdown-item" href="#">2019</a>
-                                                    </li>
-                                                </ul>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                        </div>
-                    </div>
-                </div>
-                <div id="mapdiv" class="col-md-12"></div>
-                <!-- The modal -->
-                <div id="dlg_modal" class="modal">
-                    <div id="dlg_content" class="modal-content col-sm-10 col-sm-offset-1 col-md-7 col-md-offset-4">
-                        <span id="btn_close_modal"><i class="float-end fas fa-times"></i></span>
-                        <div id="table_data"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="js/agri_script.js"></script>
+    <ul id="main"></ul>
+    <script>
+        /* var list = [{
+            "topic": "Land Information",
+            "subtopic": ["Land use classification", "Land Ownership"],
+            "years": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+        }, {
+            "topic": "Agriculture",
+            "subtopic": ["Machineries", "Production", "Insurance", "Extension", "Schema", "Export"],
+            "years": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+        }, {
+            "topic": "Livestock",
+            "subtopic": ["Forage Cultivation", "Special Programs", "Small Industries", "Population", "Services"],
+            "years": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+        }, {
+            "topic": "Irrigation",
+            "subtopic": ["Ornemantel Fisheries", "Irrigation Projects", "Minor Irrigation", "Inland Fisheries"],
+            "years": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+        }]
+*/
+        /* var output = '';
+         var total_length = list.length
+         for (var i = 0; i < total_length; i++) { output +='<li>' + list[i].topic + '</li>' ; } document.getElementById('main').innerHTML=output;
+         */
+
+        /*  var json = [{
+                  "code": "A00",
+                  "depth": "0",
+                  "row": [{
+                          "code": "A001",
+                          "depth": "1",
+                          "disease": "Cholera due to Vibrio cholerae 01, biovar eltor"
+                      },
+                      {
+                          "code": "A009",
+                          "depth": "1",
+                          "disease": "Cholera, unspecified"
+                      }
+                  ],
+                  "disease": "Cholera",
+                  "title": "a"
+              },
+              {
+                  "code": "A01",
+                  "depth": "0",
+                  "row": [{
+                      "code": "A0103",
+                      "depth": "1",
+                      "disease": "Typhoid pneumonia"
+                  }],
+                  "disease": "Typhoid and paratyphoid fevers",
+                  "title": "a"
+              },
+              {
+                  "code": "A010",
+                  "depth": "0",
+                  "row": [{
+                          "code": "A0102",
+                          "depth": "1",
+                          "disease": "Typhoid fever with heart involvement"
+                      },
+                      {
+                          "code": "A0103",
+                          "depth": "1",
+                          "disease": "Typhoid pneumonia"
+                      },
+                      {
+                          "code": "A0104",
+                          "depth": "1",
+                          "disease": "Typhoid arthritis"
+                      },
+                      {
+                          "code": "A014",
+                          "depth": "1",
+                          "disease": "Paratyphoid fever, unspecified"
+                      }
+                  ],
+                  "disease": "Typhoid fever",
+                  "title": "b"
+              },
+              {
+                  "code": "A02",
+                  "depth": "0",
+                  "row": [{
+                          "code": "A020",
+                          "depth": "1",
+                          "disease": "Salmonella enteritis"
+                      },
+                      {
+                          "code": "A021",
+                          "depth": "1",
+                          "disease": "Salmonella sepsis"
+                      }
+                  ],
+                  "disease": "Other salmonella infections",
+                  "title": "b"
+              },
+              {
+                  "code": "A022",
+                  "depth": "0",
+                  "row": [{
+                          "code": "A0221",
+                          "depth": "1",
+                          "disease": "Salmonella meningitis"
+                      },
+                      {
+                          "code": "A0224",
+                          "depth": "1",
+                          "disease": "Salmonella osteomyelitis"
+                      },
+                      {
+                          "code": "A0225",
+                          "depth": "1",
+                          "disease": "Salmonella pyelonephritis"
+                      },
+                      {
+                          "code": "A0229",
+                          "depth": "1",
+                          "disease": "Salmonella with other localized infection"
+                      }
+                  ],
+                  "disease": "Localized salmonella infections",
+                  "title": "c"
+              }
+          ];*/
+
+        /*  var list = {}
+          //Loop over the json object and build our new object
+          for (var k in json) {
+              //Grab the title
+              var group = json[k].title;
+              //Check to see if our new title has this key
+              if (!(group in list)) {
+                  //If not, initialize it as an array
+                  list[group] = [];
+              }
+              //Add all the row.disease entries to the array
+              for (var x in json[k].row) {
+                  list[group].push(json[k].row[x].disease);
+              }
+          }
+
+          console.log(list);
+          console.log(JSON.stringify(list));
+
+          //Build the html
+          var html = '';
+          //Itterate over our new list
+          for (var x in list) {
+              //Add the title key
+              html += '<li>' + x;
+              //Check to make sure the array isn't empty
+              if (list[x] != []) {
+                  //Add the nested ul
+                  html += '<ul>';
+                  //ITterate over the items for this key and add li
+                  for (var item in list[x]) {
+                      html += '<li>' + list[x][item] + '</li>';
+                  };
+                  //Close the ul
+                  html += '</ul>';
+              }
+              //close the li
+              html += '</li>';
+          }
+          $('#main').html(html);*/
+
+        /*   var new_object = {
+               "a": ["Cholera due to Vibrio cholerae 01, biovar eltor", "Cholera, unspecified", "Typhoid pneumonia"],
+               "b": ["Typhoid fever with heart involvement", "Typhoid pneumonia", "Typhoid arthritis", "Paratyphoid fever, unspecified", "Salmonella enteritis", "Salmonella sepsis"],
+               "c": ["Salmonella meningitis", "Salmonella osteomyelitis", "Salmonella pyelonephritis", "Salmonella with other localized infection"]
+           }*/
+
+
+        /* var json = {
+             "Land Information": [{
+                 "Land use classification": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Land Ownership": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }],
+             "Agriculture": [{
+                 "Machineries": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Production": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Insurance": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Extension": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Schema": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Export": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }],
+             "Livestock": [{
+                 "Forage Cultivation": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Special Programs": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Small Industries": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Population": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Services": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }],
+             "Irrigation": [{
+                 "Ornemantel Fisheries": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Irrigation Projects": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Minor Irrigation": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }, {
+                 "Inland Fisheries": ["All", "2015", "2016", "2017", "2018", "2019", "2020", "2021", "2020"]
+             }]
+         }*/
+
+        var response = {
+            "brands": {
+                "Honda": {
+                    "Accord": ["red", "blue"],
+                    "Civic": ["green", "yellow"]
+                },
+
+                "Porsche": {
+                    "Cayenne": ["black", "grey"],
+                    "Cayman": ["orange", "pink"]
+                },
+
+                "Toyota": {
+                    "Prius": ["magenta", "turquish"],
+                    "Aqua": ["magenta", "turquish"]
+                },
+                "Nissan": {
+                    "Sunny": ["puple", "white"],
+                    "Bluebird": ["ash", "glow"]
+                }
+            }
+        }
+
+        var car_brands;
+        var car_modals;
+        var car_colors;
+        var html_output = '';
+
+
+        for (car_brands in response.brands) {
+            // console.log(car_brands);
+            html_output += `<li id = title_${car_brands} >` + car_brands + "</li>";
+            if (car_brands == 'Honda') {
+                html_output += "<ul>"
+                for (car_modals in response.brands.Honda) {
+                    // console.log(car_modals);
+                    html_output += `<li id=subtitle_${car_modals}>` + car_modals + "</li>";
+                    car_colors = response.brands.Honda[car_modals]
+                    html_output += "<ul>"
+                    for (var i = 0; i < car_colors.length; i++) {
+                        // console.log(car_colors[i]);
+                        html_output += "<li>" + car_colors[i] + "</li>";
+                    }
+                    html_output += "</ul>"
+                }
+                html_output += "</ul>"
+
+            } else if (car_brands == 'Porsche') {
+                html_output += "<ul>"
+                for (car_modals in response.brands.Porsche) {
+                    // console.log(car_modals);
+                    html_output += `<li id=subtitle_${car_modals}>` + car_modals + "</li>";
+                    car_colors = response.brands.Porsche[car_modals]
+                    html_output += "<ul>"
+                    for (var i = 0; i < car_colors.length; i++) {
+                        // console.log(car_colors[i]);
+                        html_output += "<li>" + car_colors[i] + "</li>";
+                    }
+                    html_output += "</ul>"
+                }
+                html_output += "</ul>"
+
+            } else if (car_brands == 'Toyota') {
+                html_output += "<ul>"
+                for (car_modals in response.brands.Toyota) {
+                    // console.log(car_modals);
+                    html_output += `<li id=subtitle_${car_modals}>` + car_modals + "</li>";
+                    car_colors = response.brands.Toyota[car_modals]
+                    html_output += "<ul>"
+                    for (var i = 0; i < car_colors.length; i++) {
+                        // console.log(car_colors[i]);
+                        html_output += "<li>" + car_colors[i] + "</li>";
+                    }
+                    html_output += "</ul>"
+                }
+                html_output += "</ul>"
+
+            } else if (car_brands == 'Nissan') {
+                html_output += "<ul>"
+                for (car_modals in response.brands.Nissan) {
+                    // console.log(car_modals);
+                    html_output += `<li id=subtitle_${car_modals}>` + car_modals + "</li>";
+                    car_colors = response.brands.Nissan[car_modals]
+                    html_output += "<ul>"
+                    for (var i = 0; i < car_colors.length; i++) {
+                        // console.log(car_colors[i])
+                        html_output += "<li>" + car_colors[i] + "</li>";
+                    }
+                    html_output += "</ul>"
+                }
+                html_output += "</ul>"
+
+            }
+            html_output += "</ul>"
+
+        }
+
+        $('#main').html(html_output);
+    </script>
 </body>
 
 </html>
