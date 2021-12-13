@@ -49,41 +49,58 @@
 
 
     <script>
-        var regionsData = [{
-                ID: 1,
-                Title: "Middle Earth",
-                Locations: [{
-                        Category: "Lothlorien",
-                        Child: [{
-                                PersonTitle: "Galadriel",
-                                Link: "https://www.galadriel.lot"
-                            },
-                            {
-                                PersonTitle: "Celeborn",
-                                Link: "https://www.celeb.lot"
-                            }
-                        ]
+        var spatial_unit_data = [{
+                id: 1,
+                category: "Land Informations",
+                content: [{
+                        sub_category: "Land Use Classification",
+                        sub_content: [{
+                            year: "2015"
+                        }, {
+                            year: "2016"
+                        }, {
+                            year: "2017"
+                        }, {
+                            year: "2018"
+                        }, {
+                            year: "2019"
+                        }, {
+                            year: "2020"
+                        }, {
+                            year: "2021"
+                        }]
                     },
                     {
-                        Category: "Mordor",
-                        Child: [{
-                            PersonTitle: "Saruman",
-                            Link: "https://www.srmn.org"
+                        sub_category: "Land Ownership",
+                        sub_content: [{
+                        year: "2015"
+                        }, {
+                        year: "2016"
+                        }, {
+                        year: "2017"
+                        }, {
+                        year: "2018"
+                        }, {
+                        year: "2019"
+                        }, {
+                        year: "2020"
+                        }, {
+                        year: "2021"
                         }]
                     }
                 ]
             },
             {
-                ID: 2,
-                Title: "Arrakis",
-                Locations: [{
-                    Category: "Lothlorien1",
-                    Child: [{
-                            PersonTitle: "Galadriel1",
+                id: 2,
+                category: "Arrakis",
+                content: [{
+                    sub_category: "Lothlorien1",
+                    sub_content: [{
+                            year: "Galadriel1",
                             Link: "https://www.galadriel.lot"
                         },
                         {
-                            PersonTitle: "Celeborn",
+                            year: "Celeborn",
                             Link: "https://www.celeb.lot"
                         }
                     ]
@@ -91,16 +108,16 @@
             }
         ]
         var csContainer = $(".mo_cs-dropdown");
-        $.each(regionsData, (index, item) => {
+        $.each(spatial_unit_data, (index, item) => {
             //append li
-            var dropdownGroup = `<li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle"  id="${index}_main" data-region="${item.Title}" href="#"  >${item.Title}</a>
+            var dropdownGroup = `<li class="dropdown-submenu"><a class="dropdown-item dropdown-toggle"  id="${index}_main" data-region="${item.category}" href="#"  >${item.category}</a>
                             <ul class="dropdown-menu" aria-labelledby="${index}_main">`
-            //loop through loaction array
-            $.each(item.Locations, (index, items) => {
-                dropdownGroup += ` <li class="dropdown-submenu"><a class="dropdown-toggle dropdown-item"  id="${index}_inner"  href="#" >${items.Category}</a><ul class="dropdown-menu" aria-labelledby="${index}_inner">`
-                //loop through child array
-                $.each(items.Child, (index, items) => {
-                    dropdownGroup += ` <li><a class="dropdown-item "  href="${items.Link}" aria-labelledby="${index}_inner"  href="#">${items.PersonTitle}</a></li>`
+            //loop through content array
+            $.each(item.content, (index, items) => {
+                dropdownGroup += ` <li class="dropdown-submenu"><a class="dropdown-toggle dropdown-item"  id="${index}_inner"  href="#" >${items.sub_category}</a><ul class="dropdown-menu" aria-labelledby="${index}_inner">`
+                //loop through sub_content array
+                $.each(items.sub_content, (index, items) => {
+                    dropdownGroup += ` <li><a class="dropdown-item "  href="#" aria-labelledby="${index}_inner"  href="#">${items.year}</a></li>`
                 })
                 dropdownGroup += `</ul></li>` //closes tags
             })
