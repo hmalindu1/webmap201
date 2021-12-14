@@ -42,7 +42,7 @@
 
 <body>
     <button class="dropdown-toggle btn btn-outline-info" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        Dropdown link
+        Spatial Unit
     </button>
     <ul class="dropdown-menu mo_cs-dropdown" aria-labelledby="dropdownMenuLink">
     </ul>
@@ -50,63 +50,311 @@
 
     <script>
         var spatial_unit_data = [{
-                id: 1,
-                category: "Land Informations",
-                content: [{
-                        sub_category: "Land Use Classification",
-                        sub_content: [{
-                            year: "2015"
-                        }, {
-                            year: "2016"
-                        }, {
-                            year: "2017"
-                        }, {
-                            year: "2018"
-                        }, {
-                            year: "2019"
-                        }, {
-                            year: "2020"
-                        }, {
-                            year: "2021"
-                        }]
-                    },
-                    {
-                        sub_category: "Land Ownership",
-                        sub_content: [{
-                        year: "2015"
-                        }, {
-                        year: "2016"
-                        }, {
-                        year: "2017"
-                        }, {
-                        year: "2018"
-                        }, {
-                        year: "2019"
-                        }, {
-                        year: "2020"
-                        }, {
-                        year: "2021"
-                        }]
-                    }
-                ]
-            },
-            {
-                id: 2,
-                category: "Arrakis",
-                content: [{
-                    sub_category: "Lothlorien1",
-                    sub_content: [{
-                            year: "Galadriel1",
-                            Link: "https://www.galadriel.lot"
-                        },
-                        {
-                            year: "Celeborn",
-                            Link: "https://www.celeb.lot"
-                        }
-                    ]
+            id: 1,
+            category: "Land Informations",
+            content: [{
+                sub_category: "Land Use Classification",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
                 }]
-            }
-        ]
+            }, {
+                sub_category: "Land Ownership",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }]
+        }, {
+            id: 2,
+            category: "Agriculture",
+            content: [{
+                sub_category: "Machineries",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Production",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Insurance",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Extension",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Schema",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Export",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }]
+        }, {
+            id: 3,
+            category: "Livestock",
+            content: [{
+                sub_category: "Forage Cultivation",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Special Cultivation",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Small Industies",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Population",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Services",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }]
+        }, {
+            id: 4,
+            category: "Irrigation",
+            content: [{
+                sub_category: "Ornamental Fisheries",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Irrigation Projects",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Minor Irrigation",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }, {
+                sub_category: "Inland Fisheries",
+                sub_content: [{
+                    year: "2015"
+                }, {
+                    year: "2016"
+                }, {
+                    year: "2017"
+                }, {
+                    year: "2018"
+                }, {
+                    year: "2019"
+                }, {
+                    year: "2020"
+                }, {
+                    year: "2021"
+                }]
+            }]
+        }]
         var csContainer = $(".mo_cs-dropdown");
         $.each(spatial_unit_data, (index, item) => {
             //append li
