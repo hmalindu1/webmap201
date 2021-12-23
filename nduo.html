@@ -61,7 +61,7 @@
                     dropdownGroup += ` <li class="dropdown-submenu"><a class="dropdown-toggle dropdown-item"  id="${index}_inner"  href="#" >${items.sub_category}</a><ul class="dropdown-menu" aria-labelledby="${index}_inner">`
                     //loop through sub_content array
                     $.each(items.sub_content, (index, items) => {
-                        dropdownGroup += ` <li><a class="dropdown-item "  href="#" aria-labelledby="${index}_inner"  href="#">${items.year}</a></li>`
+                        dropdownGroup += `<li><a class="dropdown-item" id="dsd_${items.year}_${items.category}" href="#" aria-labelledby="${index}_inner" href="#">${items.year}</a></li>`
                     })
                     dropdownGroup += `</ul></li>` //closes tags
                 })
