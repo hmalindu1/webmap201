@@ -1,30 +1,30 @@
-var mymap; // defining the map variable
-var lyrOSM; // defining the Open street map variable
-var lyrEsri; // defining the esri open street map variable
-var ctl_attribute; // defining the map attribute variable
-var ctl_scalebar; // defining the scale bar variable
-var ctl_mouse_postion; // defining the variable to get the position of the mouse
-var ctl_sidebar_button; // vaiable for the side bar button
-var ctl_sidebar; // variable for the side bar
-var ctl_pan; // varibale for the pan button
-var ctl_zoom; // varibale for the initial zoom
-var ctL_zoom_button; // varibale for the zoom button
-var ctl_layers; //  variable for the layer control buttons
-var shp_layers; // varibale for the shape layers
-var obj_basemap; // variable for the base map
-var gnd; // variable for the GND shape layer
-var dsd; // variable for DSD layer
-var district; // variable for the district layer
-var province; // variable for the province layer
-var options; // varible to set radio buttons and check box for the layer controls
-var lyr_gnd_search; // new layer to show the newly searched gnd layer
-var lyr_dsd_search; // new layer to show the newly searched gnd layer
-var lyr_district_search;
-var lyr_province_search;
-var ar_gnd_object_names = []; // empty array to set gnd names
-var ar_dsd_object_names = []; // empty array to set gnd names
-var ar_district_object_names = []; // empty array to set gnd names
-var ar_province_object_names = [];
+let mymap; // defining the map variable
+let lyrOSM; // defining the Open street map variable
+let lyrEsri; // defining the esri open street map variable
+let ctl_attribute; // defining the map attribute variable
+let ctl_scalebar; // defining the scale bar variable
+let ctl_mouse_postion; // defining the variable to get the position of the mouse
+let ctl_sidebar_button; // vaiable for the side bar button
+let ctl_sidebar; // variable for the side bar
+let ctl_pan; // varibale for the pan button
+let ctl_zoom; // varibale for the initial zoom
+let ctL_zoom_button; // varibale for the zoom button
+let ctl_layers; //  variable for the layer control buttons
+let shp_layers; // varibale for the shape layers
+let obj_basemap; // variable for the base map
+let gnd; // variable for the GND shape layer
+let dsd; // variable for DSD layer
+let district; // variable for the district layer
+let province; // variable for the province layer
+let options; // varible to set radio buttons and check box for the layer controls
+let lyr_gnd_search; // new layer to show the newly searched gnd layer
+let lyr_dsd_search; // new layer to show the newly searched gnd layer
+let lyr_district_search;
+let lyr_province_search;
+let ar_gnd_object_names = []; // empty array to set gnd names
+let ar_dsd_object_names = []; // empty array to set gnd names
+let ar_district_object_names = []; // empty array to set gnd names
+let ar_province_object_names = [];
 
 $(document).ready(function() {
   // jQuery document ready function
@@ -116,27 +116,7 @@ $(document).ready(function() {
           onEachFeature: return_gnd
         }).addTo(mymap);
         ctl_layers.addOverlay(gnd, "GN Divisions", "Overlays");
-        if (mymap.hasLayer(gnd)) {
-          console.log("yes");
-          // Disabling the DS panel
-          $("#btn_dsd_find_project").attr("disabled", true);
-          $("#text_dsd_find_project").attr("disabled", true);
-          $("#dsd_dropdown").addClass("disabled");
-          // Disabling the Distirct panel
-          $("#btn_district_find_project").attr("disabled", true);
-          $("#text_district_find_project").attr("disabled", true);
-          $("#district_dropdown").addClass("disabled");
-          // Disabling the Province panel panel
-          $("#btn_province_find_project").attr("disabled", true);
-          $("#text_province_find_project").attr("disabled", true);
-          $("#province_dropdown").addClass("disabled");
-
-        }
-        ar_gnd_object_names.sort();
-        $("#text_gnd_find_project").autocomplete({
-          source: ar_gnd_object_names,
-        });
-
+        
         $.ajax({
             url: 'http://localhost/webmap201/php/load_data.php',
             data: {
@@ -150,10 +130,7 @@ $(document).ready(function() {
                 onEachFeature: return_dsd
               });
               ctl_layers.addOverlay(dsd, "DS Divisions", "Overlays");
-              ar_dsd_object_names.sort();
-              $("#text_dsd_find_project").autocomplete({
-                source: ar_dsd_object_names,
-              });
+              
 
               $.ajax({
                   url: 'http://localhost/webmap201/php/load_data.php',
@@ -168,11 +145,7 @@ $(document).ready(function() {
                       onEachFeature: return_district
                     });
                     ctl_layers.addOverlay(district, "District", "Overlays");
-                    ar_district_object_names.sort();
-                    $("#text_district_find_project").autocomplete({
-                      source: ar_district_object_names,
-                    });
-
+                   
                     $.ajax({
                         url: 'http://localhost/webmap201/php/load_data.php',
                         data: {
@@ -186,11 +159,7 @@ $(document).ready(function() {
                             onEachFeature: return_province
                           });
                           ctl_layers.addOverlay(province, "Province", "Overlays");
-                          ar_province_object_names.sort();
-                          $("#text_province_find_project").autocomplete({
-                            source: ar_province_object_names,
-                          });
-
+                          
                         },
                         error: function(xhr, status, error) {
                           alert("Error: " + error);
@@ -307,7 +276,7 @@ $(document).ready(function() {
 // *************  conrol function on GND layers **********//
 
 function return_gnd(json, layer) {
-  var att = json.properties;
+  const att = json.properties;
   layer.setStyle({
     color: "#47B1D1",
     fillColor: "#47B1D1",
@@ -332,7 +301,7 @@ function return_gnd(json, layer) {
 // *************  conrol function on DSD layers **********//
 
 function return_dsd(json, layer) {
-  var att = json.properties;
+  const att = json.properties;
   layer.setStyle({
     color: "#47B1D1",
     fillColor: "#47B1D1",
@@ -357,7 +326,7 @@ function return_dsd(json, layer) {
 // *************  conrol function on District layers **********//
 
 function return_district(json, layer) {
-  var att = json.properties;
+  const att = json.properties;
   layer.setStyle({
     color: "#47B1D1",
     fillColor: "#47B1D1",
@@ -382,7 +351,7 @@ function return_district(json, layer) {
 // *************  conrol function on District layers **********//
 
 function return_province(json, layer) {
-  var att = json.properties;
+  const att = json.properties;
   layer.setStyle({
     color: "#47B1D1",
     fillColor: "#47B1D1",
