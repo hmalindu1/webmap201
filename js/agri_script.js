@@ -106,6 +106,7 @@ $(document).ready(function() {
   $.ajax({
       url: 'http://localhost/webmap201/php/load_data.php',
       data: {
+        gnd_id: '1',
         tbl: 'gnd'
       },
       type: 'POST',
