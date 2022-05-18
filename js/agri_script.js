@@ -194,8 +194,7 @@ $(document).ready(function() {
   // );
 
   shp_layers = {
-    Overlays: {
-    },
+    Overlays: {},
   };
 
   options = {
