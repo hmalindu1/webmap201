@@ -122,14 +122,10 @@ $(document).ready(function() {
         alert("Error: " + error);
       }
 
-                      }
+    }
 
-                    );
+  );
 
-                  },
-                  error: function(xhr, status, error) {
-                    alert("Error: " + error);
-                  }
 
                 }
 
