@@ -213,56 +213,14 @@ $(document).ready(function() {
     if (lyr_gnd_search) {
       lyr_gnd_search.remove();
     }
-    if (e.name !== "GN Divisions") {
-      $("#btn_gnd_find_project").attr("disabled", true);
-      $("#text_gnd_find_project").attr("disabled", true);
-      $("#gnd_dropdown").addClass("disabled");
-    } else {
-      $("#btn_gnd_find_project").attr("disabled", false);
-      $("#text_gnd_find_project").attr("disabled", false);
-      $("#gnd_dropdown").removeClass("disabled");
-    }
     if (lyr_dsd_search) {
       lyr_dsd_search.remove();
-    }
-    if (e.name !== "DS Divisions") {
-      $("#btn_dsd_find_project").attr("disabled", true);
-      $("#text_dsd_find_project").attr("disabled", true);
-      $("#dsd_dropdown").addClass("disabled");
-
-    } else {
-      $("#btn_dsd_find_project").attr("disabled", false);
-      $("#text_dsd_find_project").attr("disabled", false);
-      $("#dsd_dropdown").removeClass("disabled");
-
     }
     if (lyr_district_search) {
       lyr_district_search.remove();
     }
-    if (e.name !== "District") {
-      $("#btn_district_find_project").attr("disabled", true);
-      $("#text_district_find_project").attr("disabled", true);
-      $("#district_dropdown").addClass("disabled");
-
-    } else {
-      $("#btn_district_find_project").attr("disabled", false);
-      $("#text_district_find_project").attr("disabled", false);
-      $("#district_dropdown").removeClass("disabled");
-
-    }
     if (lyr_province_search) {
       lyr_province_search.remove();
-    }
-    if (e.name !== "Province") {
-      $("#btn_province_find_project").attr("disabled", true);
-      $("#text_province_find_project").attr("disabled", true);
-      $("#province_dropdown").addClass("disabled");
-
-    } else {
-      $("#btn_province_find_project").attr("disabled", false);
-      $("#text_province_find_project").attr("disabled", false);
-      $("#province_dropdown").removeClass("disabled");
-
     }
     console.log(e);
   });
