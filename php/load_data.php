@@ -1,5 +1,6 @@
 <?php
-if (isset($_POST['tbl'])) {
+if (isset($_POST['tbl']) && isset($_POST['gnd_id'])) {
+    $id_gnd = $_POST['gnd_id'];
     $table = $_POST['tbl'];
     $dsn = "pgsql:host=localhost;dbname=webmap201;port=5432";
     $opt = [
@@ -9,7 +10,7 @@ if (isset($_POST['tbl'])) {
     ];
     $pdo = new PDO($dsn, 'postgres', '123', $opt);
 
-    $result = $pdo->query("SELECT *, ST_AsGeoJSON(geom,5) AS geojson FROM {$table}");
+    $result = $pdo->query("SELECT *, ST_AsGeoJSON(geom,5) AS geojson FROM {$table} WHERE id = {$id_gnd}");
     $features = [];
     foreach ($result as $row) {
         unset($row['geom']);
