@@ -161,10 +161,10 @@ $(document).ready(function() {
                           });
                           ctl_layers.addOverlay(province, "Province", "Overlays");
                           
-                        },
-                        error: function(xhr, status, error) {
-                          alert("Error: " + error);
-                        }
+      },
+      error: function(xhr, status, error) {
+        alert("Error: " + error);
+      }
 
                       }
 
