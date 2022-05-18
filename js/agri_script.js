@@ -127,27 +127,71 @@ $(document).ready(function() {
   );
 
 
-                }
+  // $.ajax({
+  //     url: 'http://localhost/webmap201/php/load_data.php',
+  //     data: {
+  //       tbl: 'dsd'
+  //     },
+  //     type: 'POST',
+  //     success: function(response) {
+  //       console.log(JSON.parse(response));
+  //       json_dsd = JSON.parse(response);
+  //       dsd = L.geoJSON(json_dsd, {
+  //         onEachFeature: return_dsd
+  //       });
+  //       ctl_layers.addOverlay(dsd, "DS Divisions", "Overlays");
+  //     },
+  //     error: function(xhr, status, error) {
+  //       alert("Error: " + error);
+  //     }
 
-              );
+  //   }
 
-            },
-            error: function(xhr, status, error) {
-              alert("Error: " + error);
-            }
+  // );
 
-          }
+  // $.ajax({
+  //     url: 'http://localhost/webmap201/php/load_data.php',
+  //     data: {
+  //       tbl: 'district'
+  //     },
+  //     type: 'POST',
+  //     success: function(response) {
+  //       console.log(JSON.parse(response));
+  //       json_district = JSON.parse(response);
+  //       district = L.geoJSON(json_district, {
+  //         onEachFeature: return_district
+  //       });
+  //       ctl_layers.addOverlay(district, "District", "Overlays");
+  //     },
+  //     error: function(xhr, status, error) {
+  //       alert("Error: " + error);
+  //     }
 
-        );
+  //   }
 
-      },
-      error: function(xhr, status, error) {
-        alert("Error: " + error);
-      }
+  // );
 
-    }
+  // $.ajax({
+  //     url: 'http://localhost/webmap201/php/load_data.php',
+  //     data: {
+  //       tbl: 'province'
+  //     },
+  //     type: 'POST',
+  //     success: function(response) {
+  //       console.log(JSON.parse(response));
+  //       json_province = JSON.parse(response);
+  //       province = L.geoJSON(json_province, {
+  //         onEachFeature: return_province
+  //       });
+  //       ctl_layers.addOverlay(province, "Province", "Overlays");
+  //     },
+  //     error: function(xhr, status, error) {
+  //       alert("Error: " + error);
+  //     }
 
-  );
+  //   }
+
+  // );
 
   shp_layers = {
     Overlays: {
